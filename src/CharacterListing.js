@@ -51,7 +51,7 @@ function CharacterListing() {
     // }, [race]);
 
     useEffect(() => {
-        axios.get(`https://the-one-api.dev/v2/character?limit=${limitPerPage}?page=${currentPage}?offset=${currentPage}&&gender=${gender}&&race=${race}&&sort=name:${sort}`, {
+        axios.get(`https://the-one-api.dev/v2/character?limit=${limitPerPage}&&page=${currentPage}?offset=${currentPage}&&gender=${gender}&&race=${race}&&sort=name:${sort}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
