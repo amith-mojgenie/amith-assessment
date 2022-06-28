@@ -152,6 +152,7 @@ function CharacterListing() {
                                 type='text'
                                 className='search-input'
                                 onChange={(e) => { setSearchName(e?.target?.value) }}
+                                placeholder='Search by name'
                             />
                             <img src='./search.svg' className='search-icon' />
                         </div>
