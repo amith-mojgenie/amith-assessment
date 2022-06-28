@@ -60,7 +60,8 @@ function CharacterListing() {
                 console.log(res);
                 setAvailableCharacters(res?.data?.docs);
                 setTotalPageAvailable(res?.data?.pages);
-                setOffset(1)
+                setOffset(1);
+                setCurrentPage(res?.data?.page);
             })
             .catch(err => console.log(err));
     }, [currentPage, limitPerPage, sort, gender, race]);
@@ -171,7 +172,7 @@ function CharacterListing() {
                 <div className='sub-section-2'>
                     <div className='race-wrap'>
                         <h3>Race</h3>
-                        <select className='race-select' onChange={(e) => { setRace(e?.target?.value) }}>
+                        <select className='race-select' onChange={(e) => { setRace(e?.target?.value); setCurrentPage(1) }}>
                             <option value="Elves">Elves</option>
                             <option value="Men">Men</option>
                             <option value="Dwarves"> Dwarves</option>
@@ -184,7 +185,7 @@ function CharacterListing() {
                     </div>
                     <div className='gender-wrap'>
                         <h3>Gender</h3>
-                        <select className='gender-select' onChange={(e) => { setGender(e?.target?.value) }}>
+                        <select className='gender-select' onChange={(e) => { setGender(e?.target?.value); setCurrentPage(1) }}>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                             <option value="">Any</option>
