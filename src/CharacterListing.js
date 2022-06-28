@@ -17,6 +17,7 @@ function CharacterListing() {
     const [searchName, setSearchName] = useState('');
     const [sort, setSort] = useState('asc');
     const [race, setRace] = useState('');
+    const [offset, setOffset] = useState(1);
 
     // axios.get(`https://the-one-api.dev/v2/character?gender=${gender}`, {
 
@@ -58,8 +59,8 @@ function CharacterListing() {
             .then((res) => {
                 console.log(res);
                 setAvailableCharacters(res?.data?.docs);
-                // setCurrentPage(res?.data?.page);
-                setTotalPageAvailable(res?.data?.total);
+                setTotalPageAvailable(res?.data?.pages);
+                setOffset(1)
             })
             .catch(err => console.log(err));
     }, [currentPage, limitPerPage, sort, gender, race]);
@@ -80,9 +81,20 @@ function CharacterListing() {
                 console.log(res);
                 setAvailableCharacters(res?.data?.docs);
                 // setCurrentPage(res?.data?.page);
-                setTotalPageAvailable(res?.data?.total);
+                setTotalPageAvailable(res?.data?.pages);
             })
             .catch(err => console.log(err));
+    }
+
+    const HandlePaginationPrev = () => {
+        if (offset - 1 > 0) {
+            setOffset(offset - 1)
+        }
+    }
+    const HandlePaginationNext = () => {
+        if (offset + 1 < totalPageAvailable) {
+            setOffset(offset + 1)
+        }
     }
 
     const character_list = [
@@ -198,27 +210,29 @@ function CharacterListing() {
 
             <div className='app-pagination'>
                 <div className='page-list-wrrap' >
-                    <div> <h2>{'<'}</h2></div>
+                    <div className='prev-btn' onClick={() => { HandlePaginationPrev() }} > <h2>{'<'}</h2></div>
                     <div className='page-list'>
                         {
                             (totalPageAvailable) ? (
                                 <>
                                     {
                                         Array.apply(0, Array(totalPageAvailable)).map(function (x, i) {
-                                            return (
-                                                <>
-                                                    <div className='pages-box'>
-                                                        <button onClick={() => { HandlePagination(i + 1) }}>{i + 1}</button>
-                                                    </div>
-                                                </>
-                                            )
+                                            if (i < totalPageAvailable) {
+                                                return (
+                                                    <>
+                                                        <div className='pages-box'>
+                                                            <button onClick={() => { HandlePagination(i + offset) }}>{i + offset}</button>
+                                                        </div>
+                                                    </>
+                                                )
+                                            }
                                         })
                                     }
                                 </>
                             ) : (<></>)
                         }
                     </div>
-                    <div> <h2>{'>'}</h2></div>
+                    <div className='next-btn' onClick={() => { HandlePaginationNext() }} > <h2>{'>'}</h2></div>
                 </div>
 
                 <div className='page-limit'>
