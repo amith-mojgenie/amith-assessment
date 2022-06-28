@@ -1,38 +1,186 @@
 .App {
-  text-align: center;
+  height: 100vh;
+  /* border: 1px solid red; */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.top-header {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  border: 1px solid black;
 }
 
-.App-link {
-  color: #61dafb;
+.sub-section-1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0px 60px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.search {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.sortby {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-wrap {
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  margin-left: 40px;
+}
+
+/* input {
+  border: none;
+} */
+
+.sortby-wrap {
+  margin-left: 40px;
+}
+
+.search-input {
+  height: 25px;
+  width: 500px;
+  border: none;
+}
+
+.search-input:focus-visible {
+  outline: none;
+}
+
+.charactername-sort {
+  width: 250px;
+  height: 30px;
+}
+
+.search-icon {
+  width: 16px;
+  margin-right: 10px;
+}
+
+.sub-section-2 {
+  border: 1px SOLID rgb(42, 41, 41);
+}
+
+.race-wrap {
+  display: flex;
+  align-items: center;
+  width: 200px;
+  justify-content: space-between;
+}
+.race-select {
+  width: 145px;
+  height: 25px;
+}
+
+.gender-wrap {
+  display: flex;
+  align-items: center;
+  width: 250px;
+  justify-content: space-between;
+}
+
+.gender-select {
+  width: 145px;
+  height: 25px;
+}
+
+.sub-section-2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 60px;
+}
+
+.app-body {
+  height: 360px;
+  /* border: 1px solid green; */
+  overflow: scroll;
+}
+.app-body::-webkit-scrollbar {
+  display: none;
+}
+
+.app-pagination {
+  height: 34px;
+  /* border: 1px solid purple; */
+  background-color: lightgray;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 20px;
+  align-items: center;
+}
+
+.character-details-header {
+  display: flex;
+  flex-direction: row;
+}
+
+.page-list {
+  display: flex;
+  flex-direction: row;
+  width: 400px;
+  overflow: scroll;
+}
+
+.page-list::-webkit-scrollbar {
+  display: none;
+}
+.pages-box {
+  margin: 0px 10px;
+  align-items: center;
+  display: flex;
+}
+
+.page-list-wrrap {
+  display: flex;
+}
+
+.page-limit {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 200px;
+}
+
+.page-limit-select {
+  width: 100px;
+}
+
+.details-common-style {
+  display: flex;
+  justify-content: flex-start;
+  margin: 10px 40px;
+  gap: 0px 20px;
+}
+
+.close-btn-wrap {
+  display: flex;
+  position: absolute;
+  right: 50px;
+  padding-bottom: 35px;
+}
+
+.close-btn {
+  width: 100px;
+  height: 35px;
+}
+
+/* for changinstyle of tanle */
+.gZWIKX {
+  background-color: #c4c2c2 !important;
+}
+/* end */
+
+.row-select {
+  font-size: 16px;
+  font-weight: 500;
 }
