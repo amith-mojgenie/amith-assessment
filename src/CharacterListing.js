@@ -12,7 +12,7 @@ function CharacterListing() {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPageAvailable, setTotalPageAvailable] = useState();
     const [limitPerPage, setLimitPerPage] = useState(10);
-    const [gender, setGender] = useState();
+    const [gender, setGender] = useState('');
 
     const [searchName, setSearchName] = useState('');
     const [sort, setSort] = useState('asc');
@@ -21,36 +21,36 @@ function CharacterListing() {
     // axios.get(`https://the-one-api.dev/v2/character?gender=${gender}`, {
 
 
-    useEffect(() => {
-        axios.get(`https://the-one-api.dev/v2/character?gender=${gender}`, {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        })
-            .then((res) => {
-                console.log(res);
-                setAvailableCharacters(res?.data?.docs);
-                setTotalPageAvailable(res?.data?.total);
-            })
-            .catch(err => console.log(err));
-    }, [gender]);
+    // useEffect(() => {
+    //     axios.get(`https://the-one-api.dev/v2/character?gender=${gender}`, {
+    //         headers: {
+    //             'Authorization': `Bearer ${token}`
+    //         }
+    //     })
+    //         .then((res) => {
+    //             console.log(res);
+    //             setAvailableCharacters(res?.data?.docs);
+    //             setTotalPageAvailable(res?.data?.total);
+    //         })
+    //         .catch(err => console.log(err));
+    // }, [gender]);
+
+    // useEffect(() => {
+    //     axios.get(`https://the-one-api.dev/v2/character?race=${race}&&gender=${gender}`, {
+    //         headers: {
+    //             'Authorization': `Bearer ${token}`
+    //         }
+    //     })
+    //         .then((res) => {
+    //             console.log(res);
+    //             setAvailableCharacters(res?.data?.docs);
+    //             setTotalPageAvailable(res?.data?.total);
+    //         })
+    //         .catch(err => console.log(err));
+    // }, [race]);
 
     useEffect(() => {
-        axios.get(`https://the-one-api.dev/v2/character?race=${race}`, {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        })
-            .then((res) => {
-                console.log(res);
-                setAvailableCharacters(res?.data?.docs);
-                setTotalPageAvailable(res?.data?.total);
-            })
-            .catch(err => console.log(err));
-    }, [race]);
-
-    useEffect(() => {
-        axios.get(`https://the-one-api.dev/v2/character?limit=${limitPerPage}?page=${currentPage}?offset=${currentPage}?sort=name:${sort}`, {
+        axios.get(`https://the-one-api.dev/v2/character?limit=${limitPerPage}?page=${currentPage}?offset=${currentPage}&&gender=${gender}&&race=${race}&&sort=name:${sort}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -62,7 +62,7 @@ function CharacterListing() {
                 setTotalPageAvailable(res?.data?.total);
             })
             .catch(err => console.log(err));
-    }, [currentPage, limitPerPage, sort]);
+    }, [currentPage, limitPerPage, sort, gender, race]);
 
     const HandlePagination = (page) => {
         console.log('current page : ', page);
